@@ -23,16 +23,13 @@ namespace ConsoleApplication4
          */
         private static int KaratsubaFormula(int firstNumber, int secondNumber, int order)
         {
-            // var tasks = new Task<int>[2];
+            var tasks = new Task<int>[2];
 
-            // tasks[0] = Task.Run(() => GetKaratsubaTerm(firstNumber, order));
-            // tasks[1] = Task.Run(() => GetKaratsubaTerm(secondNumber, order));
+            tasks[0] = Task.Run(() => GetKaratsubaTerm(firstNumber, order));
+            tasks[1] = Task.Run(() => GetKaratsubaTerm(secondNumber, order));
             
-            // var firstTerm = tasks[0].Result;
-            // var secondTerm = tasks[1].Result;
-
-            var firstTerm = GetKaratsubaTerm(firstNumber, order);
-            var secondTerm = GetKaratsubaTerm(secondNumber, order);
+            var firstTerm = tasks[0].Result;
+            var secondTerm = tasks[1].Result;
 
             return firstTerm * secondTerm;
         }
